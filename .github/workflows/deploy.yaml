@@ -7,6 +7,10 @@ on:
 
   workflow_dispatch:
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,3 +30,9 @@ jobs:
           exit-code: "0"
           ignore-unfixed: true
           severity: "CRITICAL,HIGH"
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::388212729357:role/GitHubActions-ECR-Role
+          aws-region: eu-west-2
