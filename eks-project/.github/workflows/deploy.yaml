@@ -16,4 +16,6 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build Docker image
-        run: docker build -t 2048-game .
+        run: docker build -t 2048-game ./app
+
+       
