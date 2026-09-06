@@ -30,24 +30,23 @@ jobs:
           exit-code: "0"
           ignore-unfixed: true
           severity: "CRITICAL,HIGH"
-      - name: Debug GitHub OIDC claims
-        run: |
-          echo "Repository: $GITHUB_REPOSITORY"
-          echo "Ref: $GITHUB_REF"
-          echo "Workflow: $GITHUB_WORKFLOW"
-          echo "Actor: $GITHUB_ACTOR"
-      - run: |
-          curl -sSL -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
-          "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=sts.amazonaws.com" | jq -R 'split(".") | .[1] | @base64d | fromjson'
-        env:
-          ACTIONS_ID_TOKEN_REQUEST_TOKEN: ${{ env.ACTIONS_ID_TOKEN_REQUEST_TOKEN }}
-          ACTIONS_ID_TOKEN_REQUEST_URL: ${{ env.ACTIONS_ID_TOKEN_REQUEST_URL }}
-          
-          
+
+   
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.ADMINARN }}
           aws-region: eu-west-2
-          #testls
-          
+         
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Tag and push Docker image
+        env:
+          ECR_REGISTRY: 388212729357.dkr.ecr.eu-west-2.amazonaws.com
+          ECR_REPOSITORY: 2048-game
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker tag 2048-game:latest $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
