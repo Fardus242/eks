@@ -5,5 +5,5 @@ image:
   tag: v1
 
 service:
-  type: LoadBalancer
+  type: ClusterIP
   port: 80
