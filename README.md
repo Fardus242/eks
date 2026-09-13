@@ -273,6 +273,9 @@ helm upgrade --install 2048-game ./kubernetes/2048-game
 
 The AWS Load Balancer Controller then manages the AWS ALB associated with the Ingress.
 
+<img width="953" height="475" alt="2048 game " src="https://github.com/user-attachments/assets/ec87198c-4efb-4730-9957-8de991e8d5f8" />
+
+
 ## Monitoring
 
 Grafana can be accessed locally using Kubernetes port forwarding:
@@ -292,6 +295,8 @@ Prometheus can similarly be accessed using:
 ```bash
 kubectl -n monitoring port-forward svc/monitoring-kube-prometheus-prometheus 9090:9090
 ```
+<img width="948" height="470" alt="grafana metrics 3" src="https://github.com/user-attachments/assets/5108b5ec-6825-4e2c-aac3-a216813e7b6c" />
+
 
 ## Future Improvements
 
