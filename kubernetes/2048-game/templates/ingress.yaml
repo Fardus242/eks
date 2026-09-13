@@ -5,10 +5,12 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
+    external-dns.alpha.kubernetes.io/hostname: 2048.tm-fardus.com
 spec:
   ingressClassName: alb
   rules:
-    - http:
+    - host: 2048.tm-fardus.com
+      http:
         paths:
           - path: /
             pathType: Prefix
