@@ -2,7 +2,7 @@ replicaCount: 2
 
 image:
   repository: 388212729357.dkr.ecr.eu-west-2.amazonaws.com/2048-game
-  tag: fca0c681e9b947fc81afa5a07b07e97dc9ae959d
+  tag: b59d0fefa20f439fe93b78f60decf5a56062f56e
 
 service:
   type: ClusterIP
