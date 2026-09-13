@@ -1,7 +1,5 @@
 # GameGrid GitOps Platform
 
-A complete AWS Kubernetes platform for deploying and operating a containerised 2048 application on Amazon EKS.
-
 The project covers the full path from infrastructure provisioning to application deployment and monitoring. I was given the requirements for the platform and worked through the architecture, tooling choices, infrastructure, CI/CD pipeline and Kubernetes deployment.
 
 The goal was to build a platform that is repeatable, automated and maintainable rather than manually configuring individual AWS and Kubernetes resources.
