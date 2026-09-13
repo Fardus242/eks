@@ -1,4 +1,4 @@
-# EKS Platform Project
+# GameGrid GitOps Platform
 
 A complete AWS Kubernetes platform for deploying and operating a containerised 2048 application on Amazon EKS.
 
@@ -292,52 +292,6 @@ Prometheus can similarly be accessed using:
 ```bash
 kubectl -n monitoring port-forward svc/monitoring-kube-prometheus-prometheus 9090:9090
 ```
-
-## Key Engineering Decisions
-
-### Terraform
-
-Terraform was used to define AWS infrastructure as code, making the environment repeatable and reducing reliance on manual configuration.
-
-### Helm
-
-Helm was used to package the Kubernetes application and separate configuration from the Kubernetes templates.
-
-### ArgoCD
-
-ArgoCD provides a GitOps workflow where Git represents the desired state of the Kubernetes environment.
-
-### GitHub OIDC
-
-GitHub Actions authenticates with AWS using OIDC rather than storing long-lived AWS access keys in GitHub.
-
-### Image Tags
-
-Docker images are tagged using the Git commit SHA so deployments can be traced back to the exact source revision that produced the image.
-
-### ALB Ingress
-
-The AWS Load Balancer Controller allows the Kubernetes Ingress resource to control the lifecycle of the AWS Application Load Balancer while keeping application networking configuration inside Kubernetes.
-
-## What I Learned
-
-This project gave me experience working across the complete platform lifecycle rather than focusing on a single component.
-
-I worked through:
-
-* AWS infrastructure provisioning
-* Kubernetes cluster configuration
-* Containerisation
-* Container security scanning
-* CI/CD
-* GitOps
-* IAM and OIDC
-* Kubernetes networking
-* AWS load balancing
-* Monitoring and observability
-* Troubleshooting infrastructure and deployment issues
-
-A major part of the project was troubleshooting issues as they appeared rather than simply following a deployment path. This included working through AWS permissions, Kubernetes networking, load balancer provisioning, Git conflicts and CI/CD failures.
 
 ## Future Improvements
 
