@@ -7,6 +7,8 @@ The project covers the full path from infrastructure provisioning to application
 The goal was to build a platform that is repeatable, automated and maintainable rather than manually configuring individual AWS and Kubernetes resources.
 
 ## Architecture
+![Uploading WhatsApp Image 2026-09-13 at 20.05.08.jpeg…]()
+
 
 The platform follows this flow:
 
